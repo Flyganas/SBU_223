@@ -1,12 +1,6 @@
-﻿#include<Windows.h>
-#include<iostream>
-using namespace std;
+﻿#include"stdafx.h"
+#include"Constants.h"
 
-#define tab "\t"
-#define delimiter "\n--------------------------------------------------\n"
-
-const int ROWS = 5;
-const int COLS = 3;
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
