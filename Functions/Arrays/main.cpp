@@ -12,21 +12,28 @@ void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 
-void Print(int arr[], const int n);
-void Print(double arr[], const int n);
-void Print(int arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>
+void Print(T arr[], const int n);
+template<typename T>
+void Print(T arr[ROWS][COLS], const int ROWS, const int COLS);
+template<typename T>
+void ReversePrint(T arr[], const int n);
 
-void ReversePrint(int arr[], const int n);
+template<typename T>
+T Sum(T arr[], const int n);
 
-int  Sum(int arr[], const int n);
-double Sum(double arr[], const int n);
-
-double Avg(int arr[], const int n);
-int  minValueIn(int arr[], const int n);
-int  maxValueIn(int arr[], const int n);
-void shiftLeft(int arr[], const int n, int number_of_shifts);
-void shiftRight(int arr[], const int n, int number_of_shifts);
-void Sort(int arr[], const int n);
+template<typename T>
+double Avg(T arr[], const int n);
+template<typename T>
+T  minValueIn(T arr[], const int n);
+template<typename T>
+T  maxValueIn(T arr[], const int n);
+template<typename T>
+void shiftLeft(T arr[], const int n, int number_of_shifts);
+template<typename T>
+void shiftRight(T arr[], const int n, int number_of_shifts);
+template<typename T>
+void Sort(T arr[], const int n);
 void UniqueRand(int arr[], const int n);
 //void Search(....);
 
@@ -97,8 +104,8 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, 
 		}
 	}
 }
-
-void Print(int arr[], const int n)
+template<typename T>
+void Print(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -106,15 +113,8 @@ void Print(int arr[], const int n)
 	}
 	cout << endl;
 }
-void Print(double arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << "\t";
-	}
-	cout << endl;
-}
-void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
+template<typename T>
+void Print(T arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	for (int i = 0; i < ROWS; i++)
 	{
@@ -127,7 +127,8 @@ void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	cout << endl;
 }
 
-void ReversePrint(int arr[], const int n)
+template<typename T>
+void ReversePrint(T arr[], const int n)
 {
 	for (int i = n - 1; i >= 0; i--)
 	{
@@ -135,9 +136,10 @@ void ReversePrint(int arr[], const int n)
 	}
 	cout << endl;
 }
-int Sum(int arr[], const int n)
+template<typename T>
+T Sum(T arr[], const int n)
 {
-	int sum = 0;
+	T sum = 0;
 	for (int i = 0; i < n; i++)
 	{
 		sum += arr[i];
@@ -145,44 +147,37 @@ int Sum(int arr[], const int n)
 	//cout << sum << endl;	//Ne nado tak delat!!!
 	return sum;
 }
-double Sum(double arr[], const int n)
-{
-	double sum = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum += arr[i];
-	}
-	//cout << sum << endl;	//Ne nado tak delat!!!
-	return sum;
-}
-
-double Avg(int arr[], const int n)
+template<typename T>
+double Avg(T arr[], const int n)
 {
 	return Sum(arr, n) / (double)n;
 }
-int  minValueIn(int arr[], const int n)
+template<typename T>
+T  minValueIn(T arr[], const int n)
 {
-	int min = arr[0];
+	T min = arr[0];
 	for (int i = 1; i < n; i++)
 	{
 		if (arr[i] < min)min = arr[i];
 	}
 	return min;
 }
-int  maxValueIn(int arr[], const int n)
+template<typename T>
+T maxValueIn(T arr[], const int n)
 {
-	int max = arr[0];
+	T max = arr[0];
 	for (int i = 1; i < n; i++)
 	{
 		if (arr[i] > max)max = arr[i];
 	}
 	return max;
 }
-void shiftLeft(int arr[], const int n, int number_of_shifts)
+template<typename T>
+void shiftLeft(T arr[], const int n, int number_of_shifts)
 {
 	for (int i = 0; i < number_of_shifts; i++)
 	{
-		int buffer = arr[0];
+		T buffer = arr[0];
 		for (int i = 0; i < n; i++)
 		{
 			arr[i] = arr[i + 1];
@@ -193,12 +188,13 @@ void shiftLeft(int arr[], const int n, int number_of_shifts)
 		Sleep(500);*/
 	}
 }
-void shiftRight(int arr[], const int n, int number_of_shifts)
+template<typename T>
+void shiftRight(T arr[], const int n, int number_of_shifts)
 {
 	shiftLeft(arr, n, n - number_of_shifts % n);
 }
-
-void Sort(int arr[], const int n)
+template<typename T>
+void Sort(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -208,7 +204,7 @@ void Sort(int arr[], const int n)
 			//arr[j] - перебираемый элемент
 			if (arr[j] < arr[i])
 			{
-				int buffer = arr[i];
+				T buffer = arr[i];
 				arr[i] = arr[j];
 				arr[j] = buffer;
 			}
